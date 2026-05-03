@@ -13,7 +13,7 @@ export function PublicPageLayout({
   children,
 }: PublicPageLayoutProps) {
   return (
-    <main className="flex flex-1 flex-col pb-huge pt-[120px]">
+    <main className="flex flex-1 flex-col pb-huge pt-10">
       <div className={siteContentClass}>
         <h1 className="mb-md font-heading text-h2 text-primary">{title}</h1>
         {description ? (

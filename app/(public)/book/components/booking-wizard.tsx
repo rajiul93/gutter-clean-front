@@ -272,7 +272,7 @@ function SummaryCard({
               onClick={onNext}
               disabled={nextDisabled}
               className={cn(
-                "group relative flex w-full flex-col items-center gap-0.5 overflow-hidden rounded-xl bg-secondary-container px-3 py-2.5 text-primary-container transition sm:gap-1 sm:px-4 sm:py-3.5",
+                "group relative flex w-full flex-col items-center gap-0.5 overflow-hidden rounded-xl bg-white px-3 py-2.5 text-primary-container transition sm:gap-1 sm:px-4 sm:py-3.5",
                 "hover:brightness-[1.03] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-45 disabled:hover:brightness-100",
                 !nextDisabled && "booking-summary-cta--live",
               )}

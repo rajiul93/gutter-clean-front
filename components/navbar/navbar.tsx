@@ -1,5 +1,6 @@
 "use client";
 
+import { MobileNav } from "@/components/navbar/mobile-nav";
 import { useAuth } from "@/components/providers/auth-provider";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -9,6 +10,7 @@ import { usePathname } from "next/navigation";
 const links = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
+  { href: "/review", label: "Reviews" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
@@ -23,17 +25,17 @@ export function Navbar() {
         "bg-white/90 shadow-[0_8px_30px_rgb(30,58,138,0.04)] backdrop-blur-md",
       )}
     >
-      <nav className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4">
+      <nav className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-6">
         <Link
           href="/"
-          className="relative rounded-lg overflow-hidden flex shrink-0 items-center outline-offset-4 "
+          className="relative flex shrink-0 items-center overflow-hidden rounded-lg outline-offset-4"
         >
           <Image
             src="/gutter-logo.png"
             alt="GutterPrecision"
             width={300}
             height={80}
-            className="h-14 w-auto"
+            className="h-11 w-auto sm:h-14"
             priority
           />
         </Link>
@@ -59,11 +61,11 @@ export function Navbar() {
             );
           })}
         </div>
-        <div className="flex items-center space-x-md">
+        <div className="hidden items-center space-x-md md:flex">
           {profile?.role === "ADMIN" ? (
             <Link
               href="/admin"
-              className="font-heading text-sm font-semibold text-slate-600 transition-all hover:text-primary"
+              className="font-heading text-sm font-semibold text-slate-600 transition-colors hover:text-primary"
             >
               Admin
             </Link>
@@ -76,14 +78,14 @@ export function Navbar() {
           ) : firebaseUser ? (
             <Link
               href="/dashboard"
-              className="font-heading text-sm font-semibold text-slate-600 transition-all hover:text-primary"
+              className="font-heading text-sm font-semibold text-slate-600 transition-colors hover:text-primary"
             >
               Dashboard
             </Link>
           ) : (
             <Link
               href="/login"
-              className="font-heading text-sm font-semibold text-slate-600 transition-all hover:text-primary"
+              className="font-heading text-sm font-semibold text-slate-600 transition-colors hover:text-primary"
             >
               Login
             </Link>
@@ -91,12 +93,23 @@ export function Navbar() {
           <Link
             href="/book"
             className={cn(
-              "rounded-2xl bg-primary px-xl py-md text-center font-heading text-label-sm text-white transition-all duration-200",
-              "hover:bg-secondary active:scale-95",
+              "rounded-2xl bg-primary px-xl py-md text-center font-heading text-label-sm text-white transition-colors duration-200",
+              "hover:bg-secondary",
             )}
           >
             Book Now
           </Link>
+        </div>
+
+        <div className="flex shrink-0 md:hidden">
+          <MobileNav
+            key={pathname}
+            pathname={pathname}
+            links={links}
+            showAdmin={profile?.role === "ADMIN"}
+            loading={loading}
+            firebaseUser={firebaseUser}
+          />
         </div>
       </nav>
     </header>
