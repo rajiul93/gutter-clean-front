@@ -1,5 +1,5 @@
 import { cn, siteContentClass } from "@/lib/utils";
-import { ArrowRight, BadgeCheck, CalendarPlus } from "lucide-react";
+import { ArrowRight, BadgeCheck, CalendarPlus, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -24,7 +24,7 @@ export function HeroSection() {
           </div>
           <h1
             className={cn(
-              "hero-enter hero-enter-delay-2 text-balance font-heading text-h1 text-primary",
+              "hero-enter hero-enter-delay-2 text-balance font-heading text-xl font-bold text-primary",
             )}
           >
             Flawless Infrastructure. <br />
@@ -56,15 +56,19 @@ export function HeroSection() {
               />
             </Link>
             <Link
-              href="/about"
+              href="tel:+15555550100"
               className={cn(
-                "inline-flex items-center justify-center rounded-2xl border border-outline-variant bg-surface-container-low px-xl py-md text-center font-heading text-label-sm text-primary",
+                "group inline-flex items-center justify-center gap-2 rounded-2xl border border-outline-variant bg-surface-container-low px-xl py-md text-center font-heading text-label-sm text-primary",
                 "transition-all duration-300 ease-out",
                 "hover:border-primary/30 hover:bg-surface-container-high motion-safe:hover:-translate-y-0.5",
                 "active:scale-[0.98]",
               )}
             >
-              About us
+              <Phone
+                className="hero-phone-blink size-4 shrink-0 transition-transform duration-300 group-hover:scale-110"
+                aria-hidden
+              />
+              Call now
             </Link>
           </div>
           <div className="hero-enter hero-enter-delay-5 flex items-center space-x-xl border-t border-slate-100 pt-lg">

@@ -226,6 +226,20 @@ body {
   animation: hero-badge-float 5s ease-in-out infinite;
 }
 
+@keyframes hero-phone-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.hero-phone-blink {
+  animation: hero-phone-blink 1.15s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-enter,
   .hero-image-reveal,
@@ -235,6 +249,9 @@ body {
     transform: none;
   }
   .hero-badge-soft-float {
+    animation: none;
+  }
+  .hero-phone-blink {
     animation: none;
   }
 }
