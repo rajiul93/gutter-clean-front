@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Work_Sans } from "next/font/google";
 import { Providers } from "@/app/providers";
+import { StickyCallButton } from "@/components/sticky-call-button/sticky-call-button";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -39,6 +40,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <Providers>{children}</Providers>
+        <StickyCallButton />
       </body>
     </html>
   );
