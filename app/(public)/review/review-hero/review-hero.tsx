@@ -68,10 +68,10 @@ export function ReviewHero() {
       </div>
 
       {/* Full-bleed trust bar — parent page uses overflow-x-clip to avoid w-screen scrollbar */}
-      <div className="relative left-1/2 w-dvw max-w-[100vw] -translate-x-1/2 pb-lg sm:pb-xl md:pb-xxl">
+      <div className="relative left-1/2 w-dvw  bg-white max-w-[100vw] -translate-x-1/2  ">
         <div
           className={cn(
-            "grid gap-8 border-y border-slate-100/90 bg-white px-4 py-8 sm:grid-cols-3 sm:gap-6 sm:px-8 sm:py-10 md:px-12 lg:px-16 xl:px-24",
+            "grid gap-8 max-w-7xl mx-auto border-y border-slate-100/90   sm:grid-cols-3 sm:gap-6 sm:px-8 sm:py-5 md:px-12 lg:px-16 xl:px-24",
           )}
         >
           {trustItems.map(({ label, icon: Icon }) => (
