@@ -46,7 +46,6 @@ export function CreateSiteBookingFromLeadPanel({ lead }: { lead: CallBookingRow 
   async function onCreate(e: FormEvent) {
     e.preventDefault();
     setFormErr(null);
-    setSuccessId(null);
     if (!dateISO || !/^\d{4}-\d{2}-\d{2}$/.test(dateISO)) {
       setFormErr("Pick a valid visit date (YYYY-MM-DD) — sync it on the intake step if needed.");
       return;
@@ -73,33 +72,30 @@ export function CreateSiteBookingFromLeadPanel({ lead }: { lead: CallBookingRow 
     }
   }
 
-  const showConverted = !!(lead.linkedBookingId || successId);
-  const bookingId = lead.linkedBookingId ?? successId;
-
-  if (showConverted && bookingId) {
-    return (
-      <section className="rounded-2xl border border-emerald-200 bg-emerald-50/80 p-md shadow-card sm:p-lg">
-        <h2 className="font-heading text-lg font-bold text-emerald-950">Online booking created</h2>
-        <p className="mt-1 text-sm text-emerald-900/90">
-          Customers who booked by phone don’t need a web account — this job appears on your{" "}
-          <Link href="/admin" className="font-semibold text-primary underline">
-            Online bookings
-          </Link>{" "}
-          page as usual. If they later register with the same email, linking is handled automatically. Booking id:{" "}
-          <code className="rounded bg-white/80 px-1.5 py-0.5 text-xs">{bookingId}</code>
-        </p>
-        <Link
-          href="/admin"
-          className="mt-4 inline-flex rounded-xl bg-primary px-5 py-2.5 font-heading text-sm font-bold text-white transition hover:bg-secondary"
-        >
-          Open Online bookings
-        </Link>
-      </section>
-    );
-  }
+  const latestFromLead = successId ?? lead.linkedBookingId;
 
   return (
     <section className="rounded-2xl border border-slate-200 bg-white p-md shadow-card sm:p-lg">
+      {latestFromLead ? (
+        <div className="mb-6 rounded-xl border border-emerald-200 bg-emerald-50/90 p-md">
+          <p className="font-heading text-sm font-bold text-emerald-950">Latest booking from this intake</p>
+          <p className="mt-1 text-sm text-emerald-900/90">
+            Id{" "}
+            <code className="rounded bg-white/90 px-1.5 py-0.5 text-xs">{latestFromLead}</code>
+            {" — "}
+            also on{" "}
+            <Link href="/admin" className="font-semibold text-primary underline">
+              Online bookings
+            </Link>
+            .
+          </p>
+          <p className="mt-2 text-xs text-emerald-900/85">
+            For the same caller again: update date (and extras if needed), then submit — each run adds another job.
+            Earlier bookings stay listed in Online bookings under this phone or email.
+          </p>
+        </div>
+      ) : null}
+
       <h2 className="font-heading text-lg font-bold text-primary">Confirm booking from this lead</h2>
       <p className="mt-1 text-sm leading-relaxed text-slate-600">
         Even if the caller has no site account, you can add a real <strong className="font-semibold">Booking</strong>{" "}
@@ -235,7 +231,11 @@ export function CreateSiteBookingFromLeadPanel({ lead }: { lead: CallBookingRow 
             "rounded-2xl bg-primary px-xl py-md font-heading text-label-sm text-white transition hover:bg-secondary disabled:opacity-60",
           )}
         >
-          {createMut.isPending ? "Creating…" : "Create dashboard booking"}
+          {createMut.isPending
+            ? "Creating…"
+            : latestFromLead
+              ? "Create another booking"
+              : "Create dashboard booking"}
         </button>
       </form>
     </section>

@@ -20,7 +20,7 @@ export type CallBookingRow = {
   preferredSlot: CallBookingPreferredSlot;
   address: string;
   notes?: string;
-  /** If set, a real `{Booking}` was created — appears on customer dashboard + `/admin` online bookings. */
+  /** Latest `{Booking}` id from converting this intake (updates on repeat; all jobs listed under `/admin` online bookings). */
   linkedBookingId?: string;
   /** Optional contact email on the lead; if it matches an existing site user, the booking links to them. */
   customerEmail?: string;

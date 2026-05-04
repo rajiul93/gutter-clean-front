@@ -24,8 +24,8 @@ export default function AdminCallBookingsPage() {
         <div>
           <h1 className="font-heading text-2xl font-bold text-primary">Phone call bookings</h1>
           <p className="mt-1 text-sm text-slate-600">
-            Phone-call <strong className="font-semibold text-slate-700">intake leads</strong> (separate DB
-            collection from online bookings). Open a row: save intake, then optional dashboard booking.
+            Phone-call <strong className="font-semibold text-slate-700">intake leads</strong> (separate from
+            online bookings). Open a row: refresh intake details, then add one or more jobs to Online bookings.
           </p>
         </div>
         <Link
