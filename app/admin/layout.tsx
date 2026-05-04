@@ -6,7 +6,8 @@ import { useRouter } from "next/navigation";
 import { useEffect, type ReactNode } from "react";
 
 const nav: ShellNavItem[] = [
-  { href: "/admin", label: "All bookings" },
+  { href: "/admin", label: "Online bookings" },
+  { href: "/admin/call", label: "Phone Call bookings" },
   { href: "#", label: "Customers", comingSoon: true },
   { href: "#", label: "Reports", comingSoon: true },
 ];

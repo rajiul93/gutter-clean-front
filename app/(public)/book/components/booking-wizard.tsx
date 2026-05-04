@@ -51,25 +51,19 @@ const SERVICE_ICONS: Record<ServiceId, LucideIcon> = {
   inspect: Eye,
 };
 
-const SLOT_META: Record<
-  SlotPeriod,
-  { label: string; bn: string; range: string; session: string }
-> = {
+const SLOT_META: Record<SlotPeriod, { label: string; range: string; session: string }> = {
   morning: {
     label: "Morning",
-    bn: "সকাল",
     range: "8:00 AM – 12:00 PM",
     session: "Morning session",
   },
   afternoon: {
     label: "Afternoon",
-    bn: "বিকাল",
     range: "12:00 PM – 5:00 PM",
     session: "Afternoon session",
   },
   evening: {
     label: "Evening",
-    bn: "রাত",
     range: "5:00 PM – 8:00 PM",
     session: "Evening session",
   },
@@ -713,12 +707,12 @@ export function BookingWizard() {
                                       </span>
                                       {!selected && !full && (
                                         <span className="mt-0.5 block text-xs font-normal text-slate-500 sm:ml-2 sm:mt-0 sm:inline sm:text-sm">
-                                          {meta.label} · {meta.bn}
+                                          {meta.label}
                                         </span>
                                       )}
                                       {selected && (
                                         <span className="mt-0.5 block text-xs font-normal text-white/90 sm:ml-2 sm:mt-0 sm:inline sm:text-sm">
-                                          {meta.label} · {meta.bn}
+                                          {meta.label}
                                         </span>
                                       )}
                                     </span>

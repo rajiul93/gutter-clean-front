@@ -19,7 +19,10 @@ function userLabel(row: AdminBookingRow): string {
   if (u && typeof u === "object") {
     return u.email ?? u.displayName ?? "—";
   }
-  return "—";
+  if (typeof u === "string" && u.length > 0) {
+    return u;
+  }
+  return "Phone (no account)";
 }
 
 function slotLabel(slot: string): string {
