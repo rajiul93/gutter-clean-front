@@ -8,6 +8,7 @@ import { useEffect, type ReactNode } from "react";
 const nav: ShellNavItem[] = [
   { href: "/admin", label: "Online bookings" },
   { href: "/admin/call", label: "Phone Call bookings" },
+  { href: "/admin/hero-leads", label: "Hero quote requests" },
   { href: "#", label: "Customers", comingSoon: true },
   { href: "#", label: "Reports", comingSoon: true },
 ];

@@ -1,3 +1,4 @@
+import { HeroLeadForm } from "@/home/components/hero-lead-form";
 import { cn, siteContentClass } from "@/lib/utils";
 import { ArrowRight, BadgeCheck, CalendarPlus, Phone } from "lucide-react";
 import Image from "next/image";
@@ -92,7 +93,7 @@ export function HeroSection() {
         <div className="relative hero-enter hero-enter-delay-4">
           <div
             className={cn(
-              "group hero-image-reveal aspect-square overflow-hidden rounded-2xl shadow-2xl",
+              "group hero-image-reveal relative aspect-square overflow-hidden rounded-2xl shadow-2xl",
               "ring-1 ring-black/5 transition-transform duration-700 ease-out motion-safe:hover:scale-[1.02]",
             )}
           >
@@ -105,6 +106,10 @@ export function HeroSection() {
               priority
               sizes="(min-width: 1024px) 50vw, 100vw"
             />
+            <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" aria-hidden />
+            <div className="absolute top-2 md:bottom-2 left-2 right-2 z-10 min-w-0">
+              <HeroLeadForm />
+            </div>
           </div>
           <div className="hero-card-enter absolute -bottom-md -left-md">
             <div
